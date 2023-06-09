@@ -1,0 +1,15 @@
+백준에서 입력값 받기
+
+sys.readline()이 더 빠르다는데 이유 찾아보기
+
+N = int(input()) # 입력 개수
+for i in range(N):
+
+개수 모를 때
+while True:
+  try:
+    a, b = map(int, input().split())
+  except:
+
+import sys
+map(int, sys.stdin.readline().split())

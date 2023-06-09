@@ -1,0 +1,4 @@
+# extension에서 python 설치
+# ctrl + shift + p -> python select interpreter 
+# anaconda 설치해서 가상환경 사용하기
+# ctrl + shift + p -> preference open shortcut -> python run에 단축키 추가하기 (ctrl + enter)
