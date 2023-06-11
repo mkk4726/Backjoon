@@ -48,3 +48,4 @@ for _ in range(N):
   result_cnt = 0
   for i in range(1, area_cnt * 2 + 1):
     candidate = find_best(i)
+    
