@@ -1,45 +1,35 @@
+import heapq
 from sys import stdin, setrecursionlimit
 setrecursionlimit(10**6) # 파이썬 최대 재귀깊이 높이기
 
 stdin = open('1655/sample_input.txt', 'rt') # 테스트할 때, 제출할 때는 주석처리 해주기
 
-
-def get_median(n_l: list) -> int:
-  length = len(n_l)
-  
-  if (length == 1): return n_l[0]
-  
-  if (length % 2 == 0): return min(n_l[length // 2 - 1], n_l[length // 2]) 
-  else: return n_l[length // 2]  
-
 n = int(stdin.readline().strip())
 
-number_list = []
+# python에서 제공하는 heap은 min heap. root node에 가장 작은 값이 옴.
+# 따라서 max heap을 사용하기 위해 입력값을 음수로 바꿔 입력
+left_heap = [] # max heap
+right_heap = [] # min heap
+
 for _ in range(n):
-  number = int(stdin.readline().strip())
-
-  if len(number_list) == 0: 
-    number_list.append(number)
-    print(number)
-    continue
+  input_number = int(stdin.readline().strip())
   
-  start = 0; end = len(number_list) - 1
-  while (start < end):
-    middle = (start + end) // 2
-    if (number == number_list[middle]): break
-    if (number < number_list[middle]): end = max(0, middle - 1)
-    else: start = min(len(number_list)-1, middle + 1)
-    
-  middle = (start + end) // 2
-  if (number <= number_list[middle]): number_list.insert(middle, number)
-  else: number_list.insert(middle + 1, number)
-                  
-  print(get_median(number_list))   
+  # left heap의 개수가 right heap의 개수보다 항상 많거나 같아야 left heap의 root node가 median을 가짐 
+  # left heap과 right heap의 개수 맞춰주기
+  if (len(left_heap) == len(right_heap)):
+    heapq.heappush(left_heap, -input_number)
+  else:
+    heapq.heappush(right_heap, input_number)
   
+  # left_heap(max heap)이 right_heap(min heap)보다 클 때 -> 두 개의 위치를 바꿔준다. 
+  if right_heap and -left_heap[0] > right_heap[0]:
+    left_number = heapq.heappop(left_heap)
+    right_number = heapq.heappop(right_heap)
     
+    heapq.heappush(left_heap, -right_number)
+    heapq.heappush(right_heap, -left_number)
+    
+  # left heap (max heap)에서 정답 꺼내기
+  print(-left_heap[0])
     
     
-
-  
-  
-  

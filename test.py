@@ -1,9 +1,10 @@
-print(int(-99))
-print(5 // 2)
-print(len([]))
-for i in range(1):
-  print(i)\
-    
-tmp = [1]
-tmp.insert(2, 5)
-print(tmp)
+import heapq
+
+tmp = []
+heapq.heappush(tmp, 1)
+heapq.heappush(tmp, 3)
+heapq.heappush(tmp, 2)
+heapq.heappush(tmp, 12)
+heapq.heappush(tmp, 4)
+
+print(tmp[0])
