@@ -1,5 +1,9 @@
-test_list =  [1, 2, 3, 4]
-print([test_list[x] for x in [0, 2]])
-print([] + [True] + [False])
-print([True, False])
-print(None+[True])
+print(int(-99))
+print(5 // 2)
+print(len([]))
+for i in range(1):
+  print(i)\
+    
+tmp = [1]
+tmp.insert(2, 5)
+print(tmp)
